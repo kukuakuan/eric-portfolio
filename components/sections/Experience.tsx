@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { experiences } from "@/lib/data";
 import { Calendar, MapPin, Users, Code } from "lucide-react";
 
@@ -62,11 +61,11 @@ export function Experience() {
 
             {/* Experience Cards */}
             <div className="space-y-8">
-              {experiences.map((exp, index) => (
+              {experiences.map((exp) => (
                 <motion.div
                   key={exp.id}
                   variants={itemVariants}
-                  className="relative pl-12 md:pl-16"
+                  className="relative md:pl-16"
                 >
                   {/* Timeline Dot */}
                   <div className="absolute left-0 md:left-6 top-6 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block" />

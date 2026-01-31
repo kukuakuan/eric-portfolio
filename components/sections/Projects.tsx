@@ -52,7 +52,7 @@ export function Projects() {
               Featured Projects
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A selection of projects I've worked on, showcasing my skills and
+              Here are some of the projects I&apos;ve worked on., showcasing my skills and
               experience
             </p>
           </motion.div>

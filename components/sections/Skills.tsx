@@ -33,37 +33,6 @@ export function Skills() {
     },
   };
 
-  const SkillBar = ({
-    name,
-    level,
-    highlight,
-  }: {
-    name: string;
-    level: number;
-    highlight?: boolean;
-  }) => {
-    return (
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">{name}</span>
-          <span className="text-xs text-muted-foreground">{level}%</span>
-        </div>
-        <div className="h-2 bg-muted rounded-full overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={inView ? { width: `${level}%` } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className={`h-full rounded-full ${
-              highlight
-                ? "bg-gradient-to-r from-blue-600 to-purple-600"
-                : "bg-primary"
-            }`}
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <section id="skills" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,96 +45,40 @@ export function Skills() {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Technologies and tools I use to bring ideas to life
+              Focused on delivering high-impact solutions with modern technologies
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Languages */}
-            <motion.div variants={itemVariants}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Languages</CardTitle>
-                  <CardDescription>Programming languages</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {skills.languages.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                    />
-                  ))}
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Frontend */}
-            <motion.div variants={itemVariants}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Frontend</CardTitle>
-                  <CardDescription>Frontend technologies</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {skills.frontend.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      highlight={skill.highlight}
-                    />
-                  ))}
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Backend */}
-            <motion.div variants={itemVariants}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Backend</CardTitle>
-                  <CardDescription>Backend technologies</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {skills.backend.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                    />
-                  ))}
-                </CardContent>
-              </Card>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Object.entries(skills).map(([key, category]) => (
+              <motion.div key={key} variants={itemVariants} className="h-full">
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-xl">{category.title}</CardTitle>
+                      <Badge variant={category.level === "Expert" ? "default" : "secondary"}>
+                        {category.level}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <Badge key={skill} variant="outline" className="text-sm">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {category.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-
-          {/* Tools */}
-          <motion.div variants={itemVariants} className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Tools & Platforms</CardTitle>
-                <CardDescription>
-                  Development tools and cloud platforms
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.tools.map((tool) => (
-                    <Badge
-                      key={tool.name}
-                      variant="secondary"
-                      className="text-sm py-2 px-4"
-                    >
-                      {tool.name}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
         </motion.div>
       </div>
     </section>

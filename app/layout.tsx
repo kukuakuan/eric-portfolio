@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SkipToContent } from "@/components/layout/skip-to-content";
 import { CursorFollower } from "@/components/ui/cursor-follower";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { StructuredData } from "@/components/seo/structured-data";
 
 const inter = Inter({
@@ -85,6 +86,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SkipToContent />
+          <ScrollProgress />
           <CursorFollower />
           <Header />
           <main id="main-content">{children}</main>

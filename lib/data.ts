@@ -1,42 +1,39 @@
 export const personalInfo = {
   name: "Nguyễn Hồng Quân",
   role: "Senior Fullstack Developer (Strong FE)",
-  location: "Cau Giay, Ha Noi",
+  location: "Ha Noi, Viet Nam",
   email: "nguyenhongquan1921@gmail.com",
   phone: "+84-946-657-509",
   linkedin: "https://linkedin.com/in/nguyenhongquan1921",
-  github: "https://github.com/yourusername", // Update with actual GitHub
-  objective: "A dedicated Senior Fullstack Developer with strong frontend expertise and proven leadership experience. Specializing in Next.js, React, and modern web technologies while leading frontend and AI teams. Passionate about building scalable applications and mentoring development teams.",
+  github: "https://github.com/kukuakuan",
+  objective: "Fullstack Software Engineer with 4+ years of experience building production-grade web applications. Specialized in modern frontend architecture with React and Next.js, and backend systems using Node.js, NestJS, and FastAPI.",
 };
 
 export const skills = {
-  languages: [
-    { name: "JavaScript (ES6+)", level: 90 },
-    { name: "TypeScript", level: 90 },
-    { name: "Python", level: 75 },
-    { name: "C/C++", level: 70 },
-    { name: "C#", level: 65 },
-  ],
-  frontend: [
-    { name: "Next.js", level: 95, highlight: true },
-    { name: "React.js", level: 90 },
-    { name: "Vue.js", level: 80 },
-    { name: "Vite", level: 85 },
-  ],
-  backend: [
-    { name: "NestJS", level: 85 },
-    { name: "Node.js", level: 85 },
-    { name: "Django", level: 70 },
-    { name: "FastAPI", level: 75 },
-  ],
-  tools: [
-    { name: "Git", level: 90 },
-    { name: "Docker", level: 75 },
-    { name: "AWS", level: 70 },
-    { name: "Supabase", level: 80 },
-    { name: "Xano", level: 75 },
-    { name: "WeWeb", level: 70 },
-  ],
+  frontend: {
+    title: "Frontend Engineering",
+    level: "Expert",
+    skills: ["Next.js", "React", "TypeScript", "Vite", "Tailwind"],
+    description: "Architecting and delivering production-grade web applications with strong focus on performance, scalability, and user experience."
+  },
+  backend: {
+    title: "Backend & APIs",
+    level: "Advanced",
+    skills: ["NestJS", "Node.js", "FastAPI", "Django"],
+    description: "Designing scalable backend systems, REST APIs, authentication layers, and service orchestration."
+  },
+  ai: {
+    title: "AI & Intelligent Systems",
+    level: "Advanced",
+    skills: ["AI Agents", "RAG", "LangChain", "OpenAI API"],
+    description: "Building multi-datasource AI agents and LLM-powered applications integrated into real business products."
+  },
+  cloud: {
+    title: "Cloud & DevOps",
+    level: "Proficient",
+    skills: ["Docker", "AWS", "Supabase", "Xano", "WeWeb"],
+    description: "Containerized deployments, cloud services, and rapid product infrastructure."
+  },
 };
 
 export const experiences = [
@@ -260,7 +257,7 @@ export const quickFacts = [
   {
     icon: "💼",
     label: "Experience",
-    value: "2+ years professional experience",
+    value: "4+ years professional experience",
   },
   {
     icon: "🌐",

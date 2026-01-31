@@ -61,8 +61,8 @@ export function About() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Description */}
-            <motion.div variants={itemVariants}>
-              <Card>
+            <motion.div variants={itemVariants} className="h-full">
+              <Card className="h-full">
                 <CardHeader>
                   <CardTitle>Who I Am</CardTitle>
                 </CardHeader>
@@ -71,18 +71,16 @@ export function About() {
                     {personalInfo.objective}
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    I specialize in building modern, scalable web applications
-                    with a strong focus on frontend excellence. My experience
-                    spans across various industries, from healthcare and AI to
-                    gaming platforms and enterprise solutions.
+                    Strong focus on performance, scalability, developer experience,
+                    and AI-powered systems (RAG, Agents).
                   </p>
                 </CardContent>
               </Card>
             </motion.div>
 
             {/* Right Column - Quick Facts */}
-            <motion.div variants={itemVariants}>
-              <Card>
+            <motion.div variants={itemVariants} className="h-full">
+              <Card className="h-full">
                 <CardHeader>
                   <CardTitle>Quick Facts</CardTitle>
                 </CardHeader>
@@ -122,60 +120,24 @@ export function About() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  {/* Languages */}
-                  <div>
-                    <h4 className="text-sm font-semibold mb-3 text-muted-foreground">
-                      Languages
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.languages.map((skill) => (
-                        <Badge
-                          key={skill.name}
-                          variant="secondary"
-                          className="text-sm py-1.5 px-3"
-                        >
-                          {skill.name}
-                        </Badge>
-                      ))}
+                  {Object.entries(skills).map(([key, category]) => (
+                    <div key={key}>
+                      <h4 className="text-sm font-semibold mb-3 text-muted-foreground">
+                        {category.title}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <Badge
+                            key={skill}
+                            variant="secondary"
+                            className="text-sm py-1.5 px-3"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Frontend */}
-                  <div>
-                    <h4 className="text-sm font-semibold mb-3 text-muted-foreground">
-                      Frontend
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.frontend.map((skill) => (
-                        <Badge
-                          key={skill.name}
-                          variant={skill.highlight ? "default" : "secondary"}
-                          className="text-sm py-1.5 px-3"
-                        >
-                          {skill.name}
-                          {skill.highlight && " ⭐"}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Backend */}
-                  <div>
-                    <h4 className="text-sm font-semibold mb-3 text-muted-foreground">
-                      Backend
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.backend.map((skill) => (
-                        <Badge
-                          key={skill.name}
-                          variant="secondary"
-                          className="text-sm py-1.5 px-3"
-                        >
-                          {skill.name}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>

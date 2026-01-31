@@ -18,9 +18,9 @@ const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
+  // { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
+  { name: "Education", href: "#education" },
 ];
 
 export function Header() {
@@ -30,13 +30,14 @@ export function Header() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
+
       // Update active section based on scroll position
       const sections = navItems.map((item) => item.href.substring(1));
       const current = sections.find((section) => {
@@ -72,11 +73,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-sm border-b"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-md shadow-sm border-b"
+        : "bg-transparent"
+        }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -96,11 +96,10 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === item.href.substring(1)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === item.href.substring(1)
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  }`}
               >
                 {item.name}
               </Link>
@@ -150,11 +149,10 @@ export function Header() {
                       const closeButton = document.querySelector('[aria-label="Close"]') as HTMLElement;
                       closeButton?.click();
                     }}
-                    className={`px-4 py-3 rounded-md text-base font-medium transition-colors ${
-                      activeSection === item.href.substring(1)
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                    }`}
+                    className={`px-4 py-3 rounded-md text-base font-medium transition-colors ${activeSection === item.href.substring(1)
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                      }`}
                   >
                     {item.name}
                   </Link>

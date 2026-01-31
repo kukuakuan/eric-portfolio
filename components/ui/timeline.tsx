@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInViewOnce } from '@/hooks/use-in-view-once';
-import type { ReactNode } from 'react';
+import type { ComponentProps } from 'react';
 
 interface TimelineProps {
   items: Array<{
@@ -48,7 +48,7 @@ function TimelineItem({ item, index }: TimelineItemProps) {
   
   return (
     <motion.div
-      ref={ref as any}
+      ref={ref as React.Ref<HTMLDivElement>}
       initial={{ opacity: 0, x: -50 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}

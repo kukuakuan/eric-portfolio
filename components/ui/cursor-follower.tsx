@@ -15,6 +15,7 @@ export function CursorFollower() {
   useEffect(() => {
     // Only show on desktop
     const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(isDesktop);
 
     if (!isDesktop) return;
@@ -25,8 +26,8 @@ export function CursorFollower() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = 
-        target.tagName === 'BUTTON' || 
+      const isInteractive =
+        target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
         target.closest('button') !== null ||
         target.closest('a') !== null;
@@ -48,7 +49,7 @@ export function CursorFollower() {
     <>
       {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-primary rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 w-4 h-4 bg-primary rounded-full pointer-events-none z-1000 mix-blend-difference"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
@@ -56,10 +57,10 @@ export function CursorFollower() {
         }}
         transition={{ type: 'spring', stiffness: 500, damping: 28 }}
       />
-      
+
       {/* Outer ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border-2 border-primary rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 border-2 border-primary rounded-full pointer-events-none z-1000 mix-blend-difference"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,

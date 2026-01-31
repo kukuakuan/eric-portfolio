@@ -1,0 +1,67 @@
+
+> eric-portfolio@0.1.0 lint D:\Code\Next\eric-portfolio
+> eslint
+
+
+D:\Code\Next\eric-portfolio\app\not-found.tsx
+  14:45  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Code\Next\eric-portfolio\components\layout\Header.tsx
+  33:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Code\Next\eric-portfolio\components\layout\Header.tsx:33:5
+  31 |
+  32 |   useEffect(() => {
+> 33 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |   }, []);
+  35 |
+  36 |   useEffect(() => {  react-hooks/set-state-in-effect
+
+D:\Code\Next\eric-portfolio\components\sections\Contact.tsx
+   99:65  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  199:50  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  215:54  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Code\Next\eric-portfolio\components\sections\Experience.tsx
+   7:10  warning  'Separator' is defined but never used                            @typescript-eslint/no-unused-vars
+  54:57  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  65:38  warning  'index' is defined but never used                                @typescript-eslint/no-unused-vars
+
+D:\Code\Next\eric-portfolio\components\sections\Hero.tsx
+  11:7  warning  'techIcons' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\Code\Next\eric-portfolio\components\sections\Projects.tsx
+  55:40  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Code\Next\eric-portfolio\components\ui\cursor-follower.tsx
+  18:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Code\Next\eric-portfolio\components\ui\cursor-follower.tsx:18:5
+  16 |     // Only show on desktop
+  17 |     const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+> 18 |     setIsVisible(isDesktop);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  19 |
+  20 |     if (!isDesktop) return;
+  21 |  react-hooks/set-state-in-effect
+
+D:\Code\Next\eric-portfolio\components\ui\timeline.tsx
+   5:15  warning  'ReactNode' is defined but never used     @typescript-eslint/no-unused-vars
+  51:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 13 problems (9 errors, 4 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

@@ -6,7 +6,7 @@ import { useRef } from 'react';
  * @param distance - The distance to move the element (default: 50)
  * @returns [ref, y] - Reference to attach to element and y motion value
  */
-export function useParallax(distance: number = 50): [any, MotionValue<number>] {
+export function useParallax(distance: number = 50): [React.RefObject<HTMLDivElement | null>, MotionValue<number>] {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

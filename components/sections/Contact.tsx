@@ -19,7 +19,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { personalInfo, references } from "@/lib/data";
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, ExternalLink } from "lucide-react";
+import { SmartMailLink } from "@/components/shared/smart-mail-link";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -56,7 +57,7 @@ export function Contact() {
     setIsSubmitting(false);
     setIsSubmitted(true);
     form.reset();
-    
+
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
@@ -96,7 +97,7 @@ export function Contact() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or want to collaborate? Let's talk!
+              Let&apos;s build something amazing together! Want to collaborate? Let's talk!
             </p>
           </motion.div>
 
@@ -107,7 +108,7 @@ export function Contact() {
                 <CardHeader>
                   <CardTitle>Contact Information</CardTitle>
                   <CardDescription>
-                    Feel free to reach out through any of these channels
+                    I&apos;m currently available for freelance work and open to full-timese channels
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -117,12 +118,12 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium">Email</p>
-                      <a
-                        href={`mailto:${personalInfo.email}`}
-                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      <SmartMailLink
+                        email={personalInfo.email}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                       >
-                        {personalInfo.email}
-                      </a>
+                        <span>{personalInfo.email}</span>
+                      </SmartMailLink>
                     </div>
                   </div>
 
@@ -131,7 +132,7 @@ export function Contact() {
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium">Phone</p>
+                      <p className="text-sm font-medium">WhatsApp</p>
                       <a
                         href={`tel:${personalInfo.phone}`}
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -172,22 +173,6 @@ export function Contact() {
                 </CardContent>
               </Card>
 
-              {/* References */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>References</CardTitle>
-                  <CardDescription>Available upon request</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {references.map((ref, index) => (
-                      <li key={index} className="text-sm text-muted-foreground">
-                        {ref.name}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
             </motion.div>
 
             {/* Contact Form */}
@@ -196,7 +181,7 @@ export function Contact() {
                 <CardHeader>
                   <CardTitle>Send a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and I'll get back to you as soon as
+                    Let&apos;s talk about how I can help you build your next project.k to you as soon as
                     possible
                   </CardDescription>
                 </CardHeader>
@@ -295,20 +280,22 @@ export function Contact() {
                           )}
                         />
 
-                        <Button
-                          type="submit"
-                          className="w-full"
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            "Sending..."
-                          ) : (
-                            <>
-                              <Send className="mr-2 h-4 w-4" />
-                              Send Message
-                            </>
-                          )}
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            type="submit"
+                            className="flex-1"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? (
+                              "Sending..."
+                            ) : (
+                              <>
+                                <Send className="mr-2 h-4 w-4" />
+                                Send Message
+                              </>
+                            )}
+                          </Button>
+                        </div>
                       </form>
                     </Form>
                   )}

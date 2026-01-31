@@ -8,11 +8,7 @@ import { AnimatedText } from "@/components/ui/animated-text";
 import { useParallax } from "@/hooks/use-parallax";
 import { personalInfo } from "@/lib/data";
 
-const techIcons = [
-  { icon: Code2, name: "Frontend" },
-  { icon: Database, name: "Backend" },
-  { icon: Globe, name: "Fullstack" },
-];
+
 
 export function Hero() {
   const [parallaxRef, y] = useParallax(100);
@@ -61,7 +57,7 @@ export function Hero() {
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-      
+
       {/* Animated background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -111,7 +107,7 @@ export function Hero() {
           <motion.div variants={itemVariants}>
             <AnimatedText
               text={personalInfo.name}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 gradient-text"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold gradient-text py-4"
             />
           </motion.div>
 
@@ -163,13 +159,13 @@ export function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <MagneticButton
+            {/* <MagneticButton
               size="lg"
               onClick={scrollToProjects}
               className="w-full sm:w-auto text-base px-8 py-6 cursor-pointer"
             >
               View Projects
-            </MagneticButton>
+            </MagneticButton> */}
             <MagneticButton
               size="lg"
               variant="outline"

@@ -14,16 +14,21 @@ interface AnimatedTextProps {
  */
 export function AnimatedText({ text, className, delay = 0 }: AnimatedTextProps) {
   const words = text.split(' ');
-  
+
   const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.12, 
-        delayChildren: delay + 0.04 * i 
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: delay + 0.04 * i
       },
     }),
+    hover: {
+      transition: {
+        staggerChildren: 0.06,
+      },
+    },
   };
 
   const child: Variants = {
@@ -39,6 +44,13 @@ export function AnimatedText({ text, className, delay = 0 }: AnimatedTextProps) 
     hidden: {
       opacity: 0,
       y: 20,
+    },
+    hover: {
+      y: [-2, -10, 0], // wave motion
+      transition: {
+        duration: 0.4,
+        ease: 'easeInOut',
+      },
     },
   };
 

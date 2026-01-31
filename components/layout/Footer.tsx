@@ -1,11 +1,19 @@
 import Link from "next/link";
+
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import { SmartMailLink } from "@/components/shared/smart-mail-link";
+
+type SocialLink = {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     {
       name: "LinkedIn",
       href: personalInfo.linkedin,
@@ -20,6 +28,11 @@ export function Footer() {
       name: "Email",
       href: `mailto:${personalInfo.email}`,
       icon: Mail,
+    },
+    {
+      name: "WhatsApp",
+      href: `https://wa.me/${personalInfo.phone.replace(/\D/g, '')}`,
+      icon: Phone,
     },
   ];
 
@@ -43,51 +56,25 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#about"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#experience"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#projects"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Social Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <div className="flex gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
+                if (social.href === "Email") {
+                  return (
+                    <SmartMailLink
+                      key={social.name}
+                      email={personalInfo.email}
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-background border hover:bg-accent transition-colors cursor-pointer"
+                    >
+                      <button aria-label={social.name}>
+                        <Icon className="h-5 w-5" />
+                      </button>
+                    </SmartMailLink>
+                  );
+                }
                 return (
                   <Link
                     key={social.name}
